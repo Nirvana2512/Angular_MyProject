@@ -1,8 +1,8 @@
 
 <html>
 <head>
-<title><h1>
-My Project
-</h1><title>
+<h1>
+Angular MyProject
+</h1>
 <head>
 </html>
