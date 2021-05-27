@@ -1,0 +1,109 @@
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <div class="form-group">
+        <h1>LOGIN FORM</h1>
+    </div>
+    <div class="form-group">
+        <label for="firstName"> FirstName </label>    
+        <input id="firstName" type="text" class="form-control">
+    </div>
+
+    <br>
+    <div class="form-group">
+        <label for="lastName"> LastName </label>
+        <input id="lastName" type="text" class="form-control">
+    </div>
+
+    <br>
+    <div class="form-group">
+
+        <label for="emailID" class="text-white"> Email ID </label>
+        <input type="text" style="font-size: 1.5rem;" name="emailID"  id="emailID" ngModel #emailID="ngModel"
+            class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+        <div *ngIf="emailID.invalid && (emailID.dirty||emailID.touched)" class="alert">
+            <div *ngIf="emailID.errors?.pattern">Please Enter Valid Email ID</div>
+            
+
+        </div>
+
+    </div>
+    <br>
+
+     <div class="form-group">
+        <label for="password"> Password </label>
+
+        <input type="password" style="font-size: 1.5rem;" name="password" id="password" ngModel #password="ngModel"
+            class="form-control" minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" required>
+
+        <div *ngIf="password.invalid && (password.dirty||password.touched)" class="alert">
+            <div *ngIf="password.errors?.pattern">Please Enter Valid password</div>
+            <div *ngIf="password.errors?.minlength">Password's Minimum Length Should Be 8</div>
+           
+
+        </div>
+    </div>
+
+    <br>
+   <div class="form-group">
+        <label for="countries" class="text-white"> CountryPhNo </label>
+
+        <select name="countries" id="countries" style="font-size: 1.5rem;" #countrySelected="ngModel" ngModel required>
+            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+
+        </select>
+
+        <div *ngIf="countrySelected.invalid && (countrySelected.dirty||countrySelected.touched)" class="alert">
+            Please Select country
+        </div>
+
+      <!-- <span [ngClass]="countrySelected.value==='India'?" style="font-size: 1.5rem;"></span>
+        <span [ngClass]="countrySelected.value==='U.S.A'?" style="font-size: 1.5rem;"></span>-->
+
+    </div>
+
+
+    <br>
+
+  <!-- <div class="form-group">
+        <label for="cities" class="text-white">City:</label>
+        <select id="cities" name="cities" [ngSwitch]="countrySelected.value" style="font-size: 1.5rem;"
+            #citySelected="ngModel" ngModel>
+
+            <ng-template [ngSwitchCase]="'India'">
+                <option *ngFor="let city of cities.India" [value]="city">{{city}}</option>
+
+            </ng-template>
+            
+            <ng-template [ngSwitchCase]="'U.S.A'">
+                <option *ngFor="let city of cities.USA" [value]="city">{{city}}</option>
+
+            </ng-template>
+
+        </select>
+
+
+    </div>
+
+
+    <br>-->
+
+
+   <!-- <input type="submit" value="Submit" [disabled]="!f.valid"
+        [ngStyle]="f.valid?{'background-color':'green'}:{'background-color':'red'}" class="text-white">-->
+
+
+
+ 
+
+
+ <div class="form-group">
+    <button class="btn-btn-primary">Submit</button>
+    
+</div>
+
+   
+
+</form>
